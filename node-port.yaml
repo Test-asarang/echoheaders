@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: "v1"
+metadata:
+  name: node-port-for-echo-headers
+spec:
+  type: NodePort
+  selector:
+    app: echoheaders
+  ports:
+  - protocol: TCP
+    port: 80         # 80 [http], 30000 to 32767 [thrift]
+    targetPort: 8080
+    name: http

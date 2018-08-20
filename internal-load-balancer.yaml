@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: internal-load-balancer-for-echo-headers
+  annotations:
+    cloud.google.com/load-balancer-type: "Internal"
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local  # defaults to Cluster. Local preserves client ip.
+  loadBalancerSourceRanges:
+  - 10.0.0.0/8  # defaults to 0.0.0.0/0
+  ports:
+  - name: http
+    port: 80          # 80 [http], 30000 to 32767 [thrift]
+    targetPort: 8080
+    protocol: TCP     # default; can also specify UDP
+  selector:
+    app: echoheaders  # label selector for Pods to target
