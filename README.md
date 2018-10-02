@@ -26,12 +26,14 @@ kubectl describe service internal-load-balancer-for-echo-headers
 ```
 
 # Nginx Ingress Examples
-These examples assume that an nginx ingress controller has been deployed to your gke cluster.
+First install [the nginx controller](../docs/nginx-ingress-controller-setup.md). Then, follow these steps.
 
-Create resources
+Create secret with self-signed certificate, service, and ingress
 ```
 kubectl -f nginx-ingresses/*.yaml
 ```
+
+The path from outside the gke cluster to the echo headers pods is as follows; nginx ingress => http-svc service => echoheaders pod
 
 Verify nginx ingress operation
 ```
