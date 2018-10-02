@@ -26,7 +26,7 @@ kubectl describe service internal-load-balancer-for-echo-headers
 ```
 
 # Nginx Ingress Examples
-First install [the nginx controller](../docs/nginx-ingress-controller-setup.md). Then, follow these steps.
+First install [the nginx controller](./docs/nginx-ingress-controller-setup.md). Then, follow these steps.
 
 Create secret with self-signed certificate, service, and ingress
 ```
