@@ -1,5 +1,5 @@
 # echoheaders
-a simple server that responds with the http headers it received
+A simple server that responds with the http headers it received
 
 [Original source lives in kubernetes/contrib](https://github.com/kubernetes/contrib/tree/master/ingress/echoheaders).
 
