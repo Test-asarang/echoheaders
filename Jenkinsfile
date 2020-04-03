@@ -9,7 +9,7 @@ pipeline {
                         clusterName: "ops-dev",
                         location: "us-central1",
                         manifestPattern: 'kubernetes/',
-                        namespace: "staging-deploy"
+                        namespace: "staging-deploy",
                         credentialsId: "liveramp-eng-ops-dev",
                         verifyDeployments: true])
             }
@@ -29,7 +29,7 @@ pipeline {
                         clusterName: "ops-dev",
                         location: "us-central1",
                         manifestPattern: 'kubernetes/',
-                        namespace: "prod-deploy"
+                        namespace: "prod-deploy",
                         credentialsId: "liveramp-eng-ops-dev",
                         verifyDeployments: true])
             }
