@@ -2,6 +2,7 @@ kind: Service
 apiVersion: "v1"
 metadata:
   name: node-port-for-echo-headers
+  namespace: jenkins-promotion-poc
 spec:
   type: NodePort
   selector:

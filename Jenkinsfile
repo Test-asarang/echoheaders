@@ -25,7 +25,7 @@ pipeline {
           withCredentials( bindings:
               [
               file(
-                  credentialsId: 'liveramp-eng-ops-dev',
+                  credentialsId: '689aedd3-baed-45d0-bc67-ae94d9f81e90',
                   variable: 'GOOGLE_APPLICATION_CREDENTIALS'
               )
               ]) {
