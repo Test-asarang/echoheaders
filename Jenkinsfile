@@ -2,7 +2,6 @@
 
 pipeline {
   options {
-    ansiColor('xterm')
     disableConcurrentBuilds()
     // This discards builds after there are either 50 unique builds
     // or a build is older than 30 days
@@ -12,10 +11,6 @@ pipeline {
   triggers {
     // Github hook to build whenever a commit is pushed
     githubPush()
-    // This creates a trigger to run dependency builds
-    snapshotDependencies()
-    // Github hook to build whenever 'jenkins please' is in a comment on github
-    issueCommentTrigger('.*jenkins\\W+(((test|build|run|do)\\W+this)|again|git\\W+r\\W+done|please|make it so).*')
   }
 
   agent any
