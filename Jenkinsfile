@@ -26,7 +26,7 @@ pipeline {
 
   stages {
     stage('build: dry run on ops-dev') {
-      when { { branch 'master' } }
+      when { branch 'master' }
       steps {
           withCredentials( bindings:
               [
