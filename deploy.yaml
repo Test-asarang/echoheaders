@@ -1,0 +1,26 @@
+---
+version: 2
+artifacts:
+- name: ops-dev
+  image_registry: gcp
+  flags:
+    cloud: gcp
+    environment: dev
+  include_dir:
+  - nginx-ingresses
+flavors:
+  canary:
+    release_track: canary
+  stable:
+    release_track: stable
+default_flags:
+  pull_policy: IfNotPresent
+hooks:
+- default
+image_registries:
+- name: gcp
+  driver: gcp
+  prefix: gcr.io/liveramp-eng-ops-dev
+- name: local
+  driver: noop
+  prefix: local-registry
