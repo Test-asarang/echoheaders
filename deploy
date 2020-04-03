@@ -19,6 +19,8 @@ gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS
 
 gcloud container clusters get-credentials "${GKE_CLUSTER}" --project "${PROJECT}" --region "${REGION}"
 
+bundle install
+
 bundle exec kdt deploy \
   --context "gke_${PROJECT}_${REGION}_${GKE_CLUSTER}" \
   --artifact "${GKE_CLUSTER}" \
