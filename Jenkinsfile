@@ -30,22 +30,7 @@ pipeline {
                   variable: 'GOOGLE_APPLICATION_CREDENTIALS'
               )
               ]) {
-          sh './deploy ${OPS_DEV_CLUSTER} ${OPS_DEV_PROJECT} stable --dry-run=true'
-        }
-      }
-    }
-
-    stage('dry-run deploy:ops-dev') {
-      when { branch 'master'}
-      steps {
-          withCredentials( bindings:
-              [
-              file(
-                  credentialsId: 'liveramp-eng-ops-dev',
-                  variable: 'GOOGLE_APPLICATION_CREDENTIALS'
-              )
-              ]) {
-          sh './deploy ${OPS_DEV_CLUSTER} ${OPS_DEV_PROJECT} stable --dry-run=true'
+          sh './deploy ${OPS_DEV_CLUSTER} ${OPS_DEV_PROJECT} stable --dry-run=false'
         }
       }
     }
