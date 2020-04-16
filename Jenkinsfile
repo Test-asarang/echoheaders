@@ -10,8 +10,7 @@ pipeline {
                         location: "us-central1",
                         manifestPattern: 'kubernetes/',
                         namespace: "staging-deploy",
-                        credentialsId: "liveramp-eng-ops-dev",
-                        verifyDeployments: true])
+                        credentialsId: "liveramp-eng-ops-dev"])
             }
         }
         stage('Wait for Approval') {
@@ -30,8 +29,7 @@ pipeline {
                         location: "us-central1",
                         manifestPattern: 'kubernetes/',
                         namespace: "prod-deploy",
-                        credentialsId: "liveramp-eng-ops-dev",
-                        verifyDeployments: true])
+                        credentialsId: "liveramp-eng-ops-dev"])
             }
         }
     }
