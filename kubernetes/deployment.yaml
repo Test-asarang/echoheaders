@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: echoserver
-        image: gcr.io/liveramp-eng-ops-dev/echoheaders:0.0.1
+        image: gcr.io/liveramp-eng-ops-dev/echoheaders@sha256:f9849813614cafa5f2221d707cf6cbfa5cb80240fd719fcf54ad74381214582a
         ports:
         - name: http
           containerPort: 8080
