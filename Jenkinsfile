@@ -17,13 +17,16 @@ pipeline {
                   */
                   su - jenkins
 
+                  echo "here"
                   // Create attestation payload
                   gcloud container binauthz create-signature-payload \
                   --artifact-url="${IMAGE_TO_ATTEST}" > /tmp/generated_payload.json
 
+                  echo "here 2"
                   // Create signature (binary file) using private key file
                   openssl dgst -sha256 -sign /tmp/ec_private.pem /tmp/generated_payload.json > /tmp/ec_signature
 
+                 echo "here 3"
                  // Create Attestation
                  gcloud container binauthz attestations create \
                  --project="${ATTESTATION_PROJECT_ID}" \
