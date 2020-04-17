@@ -12,6 +12,7 @@ pipeline {
         stage('Create Image Attestation') {
             steps {
                 sh '''
+                  whoami
                   // Create attestation payload
                   gcloud container binauthz create-signature-payload \
                   --artifact-url="${IMAGE_TO_ATTEST}" > /tmp/generated_payload.json
