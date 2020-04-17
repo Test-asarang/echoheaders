@@ -12,7 +12,11 @@ pipeline {
         stage('Create Image Attestation') {
             steps {
                 sh '''
-                  whoami
+                  /* This shouldn't be needed. Probably because I updated
+                  statefulset to become root and install gcloud,kubectl etc
+                  */
+                  su - jenkins
+
                   // Create attestation payload
                   gcloud container binauthz create-signature-payload \
                   --artifact-url="${IMAGE_TO_ATTEST}" > /tmp/generated_payload.json
