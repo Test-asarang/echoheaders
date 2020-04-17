@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE_TO_ATTEST='gcr.io/liveramp-eng-ops-dev/echoserver@sha256:10f4dbc8eeeb8806d9b3a261b2473b77ca357b290a15d91ce5a0ca5e6164b535'
         ATTESTATION_PROJECT_ID='liveramp-eng-ops-dev'
+        ATTESTOR_PROJECT_ID='liveramp-eng-ops-dev'
         ATTESTOR='jenkins-dev-attestor'
         PUBLIC_KEY_ID='ni:///sha-256;hPVdYFSICvLyPaWKDJkRl5pRTEM2hBhMe1OagyzdMe0'
     }
