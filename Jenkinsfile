@@ -11,20 +11,18 @@ pipeline {
     stages {
         stage('Create Image Attestation') {
             steps {
-                sh '''
-                  // This shouldn't be needed. Probably because I updated
-                  // statefulset to become root and install gcloud,kubectl etc
-                  su - jenkins
+                 // This shouldn't be needed. Probably because I updated
+                 // statefulset to become root and install gcloud,kubectl etc
+                 sh 'su - jenkins'
 
                   // Create attestation payload
-                  gcloud container binauthz create-signature-payload --artifact-url="${IMAGE_TO_ATTEST}" > /tmp/generated_payload.json
+                  sh 'gcloud container binauthz create-signature-payload --artifact-url="${IMAGE_TO_ATTEST}" > /tmp/generated_payload.json'
 
                   // Create signature (binary file) using private key file
-                  openssl dgst -sha256 -sign /tmp/ec_private.pem /tmp/generated_payload.json > /tmp/ec_signature
+                  sh 'openssl dgst -sha256 -sign /tmp/ec_private.pem /tmp/generated_payload.json > /tmp/ec_signature'
 
                  // Create Attestation
-                 gcloud container binauthz attestations create --project="${ATTESTATION_PROJECT_ID}" --artifact-url="${IMAGE_TO_ATTEST}" --attestor="projects/${ATTESTOR_PROJECT_ID}/attestors/${ATTESTOR}" --signature-file=/tmp/ec_signature --public-key-id="${PUBLIC_KEY_ID}"
-                '''
+                 sh 'gcloud container binauthz attestations create --project="${ATTESTATION_PROJECT_ID}" --artifact-url="${IMAGE_TO_ATTEST}" --attestor="projects/${ATTESTOR_PROJECT_ID}/attestors/${ATTESTOR}" --signature-file=/tmp/ec_signature --public-key-id="${PUBLIC_KEY_ID}"'
             }
         }
 
